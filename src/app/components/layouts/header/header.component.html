@@ -1,1 +1,15 @@
-<p>header works!</p>
+<nav>
+    <a href="#">
+        <img src="assets/images/logo.jpg" alt="Restaurant Finder" class="site-logo">
+    </a>
+    <ul class="main-menu">
+        <li><a routerLink="dashboard" routerLinkActive="active">Dasboard</a></li>
+        <!-- <li><a routerLink="/dashboard/users">Users</a></li> -->
+         <li><a [routerLink]="[ 'dashboard', 'users' ]">Users</a></li>
+        <li><a routerLink="credits" routerLinkActive="active">Credits</a></li>
+        <li><a routerLink="login" routerLinkActive="active">Login</a></li>
+        <li><a routerLink="register" routerLinkActive="active">Register</a></li>
+    </ul>
+</nav>
+
+a
