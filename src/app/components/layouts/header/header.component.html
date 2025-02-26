@@ -1,15 +1,28 @@
-<nav>
+<!-- <nav>
     <a href="#">
         <img src="assets/images/logo.jpg" alt="Restaurant Finder" class="site-logo">
     </a>
     <ul class="main-menu">
         <li><a routerLink="dashboard" routerLinkActive="active">Dasboard</a></li>
-        <!-- <li><a routerLink="/dashboard/users">Users</a></li> -->
-         <li><a [routerLink]="[ 'dashboard', 'users' ]">Users</a></li>
+        <li><a routerLink="/dashboard/users">Users</a></li>
+        <li><a [routerLink]="[ 'dashboard', 'users' ]">Users</a></li>
         <li><a routerLink="credits" routerLinkActive="active">Credits</a></li>
         <li><a routerLink="login" routerLinkActive="active">Login</a></li>
         <li><a routerLink="register" routerLinkActive="active">Register</a></li>
     </ul>
-</nav>
-
-a
+</nav> -->
+<header>
+    <div class="container">
+        <div class="logo">
+            <a 
+                href="#"><img src="assets/images/logo.jpg" alt="logo del restaurante" class="logo-nombre">
+            </a>
+            <h1 class="name-empresa">Halcon Dorado</h1>
+        </div>
+        <nav class="nav-header">
+            <a routerLink="menu" class="nav-link">Menu</a>
+            <a routerLink="contact" class="nav-link">Contacto</a>
+            <a routerLink="location" class="nav-link">Ubicacion</a>
+        </nav>
+    </div>
+</header>
