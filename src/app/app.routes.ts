@@ -6,22 +6,15 @@ import { CreditsComponent } from './pages/public/credits/credits.component';
 import { DashboardComponent } from './pages/private/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './pages/public/page-not-found/page-not-found.component';
 import { UsersComponent } from './pages/private/users/users.component';
-import { DeliverysComponent } from './pages/private/deliverys/deliverys.component';
-import { ProductsComponent } from './pages/public/products/products.component';
-import { CategorysComponent } from './pages/private/adminCategorys/categorys/categorys.component';
 
-
-export const routes: Routes = [ 
-    { path: 'home', component: HomeComponent},
-    { path: 'login', component: LoginComponent},
-    { path: 'register', component: RegisterComponent},
-    { path: 'credits', component: CreditsComponent},
-    { path: 'products', component: ProductsComponent},
-    { path: 'dashboard', component: DashboardComponent},
-    { path: '404', component: PageNotFoundComponent},
-    { path: 'dashboard/users', component: UsersComponent},
-    { path: 'dashboard/deliverys', component: DeliverysComponent},
-    { path: 'dashboard/categorias', component: CategorysComponent},
-    { path: '', redirectTo: 'home', pathMatch: 'full'},
-    { path: '**', redirectTo: '404', pathMatch: 'full' },
+export const routes: Routes = [
+    { path: 'home', component: HomeComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
+    { path: 'credits', component: CreditsComponent },
+    { path: 'dashboard', component: DashboardComponent },
+    { path: '404', component: PageNotFoundComponent },
+    { path: 'dashboard/users', component: UsersComponent },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '**', redirectTo: '404', pathMatch: 'full' }
 ];

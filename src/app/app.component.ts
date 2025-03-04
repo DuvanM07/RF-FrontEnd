@@ -10,5 +10,5 @@ import { FooterComponent } from "./components/layouts/footer/footer.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'restaurant-finder-frontend';
+  title = 'r-finder-frontend';
 }
