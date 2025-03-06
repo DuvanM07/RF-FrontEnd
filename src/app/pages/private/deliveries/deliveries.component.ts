@@ -5,8 +5,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 @Component({
   selector: 'app-deliverys',
   imports: [ReactiveFormsModule, JsonPipe],
-  templateUrl: './deliverys.component.html',
-  styleUrl: './deliverys.component.css'
+  templateUrl: './deliveries.component.html',
+  styleUrl: './deliveries.component.css'
 })
 export class DeliverysComponent {
   formData!: FormGroup;

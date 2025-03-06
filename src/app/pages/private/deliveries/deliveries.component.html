@@ -1,0 +1,50 @@
+<form
+    class="form form-deliveries"
+    [formGroup]="formData"
+    (ngSubmit)="onSubmit()"
+>
+    <h1>deliveries</h1>
+    
+
+    <pre><code>{{ this.formData.get( 'client' )?.errors | json }}</code></pre>
+
+    <div class="form-content">
+        <div class="field">
+            <label for="client">Cliente</label>¨
+            <input type="text" formControlName="client" id="client" placeholder="Ej: David Moreno"/>
+            <div class="error">
+                @if( this.formData.get( 'client' )?.invalid && ( this.formData.get( 'client')?.dirty || this.formData.get( 'client' )?.touched)){
+                    @if( this.formData.get( 'client' )?.errors?.[ 'required'] ) {
+                        <span>El nombre es obligatoria</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="products">product</label>
+            <input type="text" formControlName="product" id="product" placeholder="Ej: Sopa de Ajiaco">
+            <div class="error">
+                @if( this.formData.get( 'product')?.invalid && ( this.formData.get( 'client' )?.dirty || this.formData.get( 'product') ?.touched)){
+                    @if( this.formData.get( 'product' )?.errors?.[ 'required']) {
+                        <span>El producto es obligatorio</span>
+                    }
+                }
+            </div>
+        </div>
+        <div class="field">
+            <label for="total">Total*</label>
+            <input type="number" formControlName='total' id="total" placeholder="Ej: 16.000$ Pesos Colombianos">
+            <div class="error">
+                @if( this.formData.get( 'total' )?.invalid && ( this.formData.get( 'price' )?.dirty || this.formData.get( 'total' )?.touched ) ) {
+                    @if( this.formData.get( 'total' )?.errors?.[ 'required' ] ) {
+                        <span>Total required</span>
+                    }
+                }
+            </div> 
+        </div>
+        <div class="field">
+            <button type="submit">Registrar Cliente</button>
+        </div>
+    </div>
+
+</form>
