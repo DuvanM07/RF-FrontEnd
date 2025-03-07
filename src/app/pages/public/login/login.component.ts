@@ -1,6 +1,7 @@
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent {
   /** Atributos */
   formData!: FormGroup;
 
-  constructor() {
+  constructor(private authService: AuthService) { 
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
       username: new FormControl( 
@@ -32,6 +33,19 @@ export class LoginComponent {
 
     // Verifica el estado de validacion del formulario
     if( this.formData.valid ) {
+      this.authService.loginUser( inputData ).subscribe({
+        next: ( data ) => {
+          console.log( data );
+          localStorage.setItem( 'token', data.token! );
+          localStorage.setItem( 'authUser', JSON.stringify( data.data ) );
+        },
+        error: ( err ) => {
+          console.error( err );
+        },
+        complete: () => {
+          console.log( 'Inicio de sesion exitoso' );
+        }
+      });
       console.log( inputData );   // Enviar los datos al BackEnd
     }
 

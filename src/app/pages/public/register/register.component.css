@@ -1,0 +1,14 @@
+.form.form-login{
+    border: 1px solid red;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;    
+}
+
+h1{
+    color: aquamarine
+}
