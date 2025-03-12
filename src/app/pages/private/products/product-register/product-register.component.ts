@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../../../services/product.service';
 import { CategoryService } from '../../../../services/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-register',
@@ -22,7 +23,8 @@ export class ProductRegisterComponent {
 
   constructor( 
     private productService: ProductService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private router: Router
   ) {
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
@@ -53,6 +55,8 @@ export class ProductRegisterComponent {
       ({
         next: ( data ) => {
           console.log( data );
+          // redireccione a la lista de productos
+          this.router.navigate( [ '/dashboard/products' ] );
         },
         error: ( err ) => {
           console.error( err );

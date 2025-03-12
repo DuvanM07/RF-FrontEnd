@@ -1,1 +1,30 @@
-<p>products works!</p>
+@if ( isLoading ) {
+    <div>Loading products...</div>
+  } @else {
+      @if ( products.length === 0) {
+        <div class="no-data">Don't have Producs.</div>
+      } @else {
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Product Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for ( product of products; track product._id ) {
+              <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      }
+  }
+
