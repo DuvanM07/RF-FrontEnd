@@ -21,7 +21,7 @@ export const noAuthGuard: CanActivateFn = (route, state) => {
     catchError(( error ) => {
       console.error( error );
       router.navigate(['/']);               // Redirige a home en caso de error
-      return [ false ];                     // Bloquea el acceso en caso de error
+      return [ true ];                      // Permite el acceso en caso de error
     })
   );
 };
