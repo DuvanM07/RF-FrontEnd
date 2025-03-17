@@ -9,6 +9,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   return authService.verifyAuthenticatedUser().pipe(
     map(isAuthenticated => {
+      console.log( 'authGuard', isAuthenticated );
       if (isAuthenticated) {
         return true;                  // Usuario autenticado, permite el acceso
       }

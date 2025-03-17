@@ -10,6 +10,7 @@ export const noAuthGuard: CanActivateFn = (route, state) => {
   return authService.verifyAuthenticatedUser()
     .pipe(
       map( isAuthenticated => {
+        console.log( 'noAuthGuard', isAuthenticated );
         if ( isAuthenticated ) {
           router.navigate([ '/dashboard' ]);      // Usuario autenticado, redirige a dashboard
 

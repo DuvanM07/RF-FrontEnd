@@ -19,9 +19,9 @@ import { noAuthGuard } from './guards/no-auth.guard';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
-    { path: 'login', component: LoginComponent },
+    { path: 'login', component: LoginComponent, canActivate: [ noAuthGuard ] },
     { path: 'register', component: RegisterComponent, canActivate: [ noAuthGuard ] },
-    { path: 'credits', component: CreditsComponent, canActivate: [ noAuthGuard ]  },
+    { path: 'credits', component: CreditsComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [ authGuard ] },
     { path: '404', component: PageNotFoundComponent },
     { path: 'dashboard/users', component: UsersComponent, canActivate: [ authGuard ] },

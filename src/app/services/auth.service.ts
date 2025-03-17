@@ -49,7 +49,7 @@ export class AuthService {
   }
 
   verifyAuthenticatedUser() : Observable<boolean> {
-    return this.http.get<Response<User>>( 'http://localhost:3000/api/auth/login', { headers: this.getHeaders() } )
+    return this.http.get<Response<User>>( 'http://localhost:3000/api/auth/re-new-token', { headers: this.getHeaders() } )
       .pipe(
         map(response => {
           console.log( response.data );
