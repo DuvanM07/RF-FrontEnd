@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
 import { Response } from '../interfaces/response'
-import { Observable, of } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,12 @@ export class AuthService {
     }
 
     return this.authUser;
+  }
+
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem( 'token' ) ?? '';
+
+    return new HttpHeaders().set( 'X-Token', token );
   }
 
   registerUser( newUser: User ) : Observable<Response<User>> {
@@ -40,5 +46,18 @@ export class AuthService {
     }
 
     return of( false );     // Usuario no esta logueado - of: Es la forma de envolver un valor para retornar un Observable de tipo boolean
+  }
+
+  verifyAuthenticatedUser() : Observable<boolean> {
+    return this.http.get<Response<User>>( 'http://localhost:3000/api/auth/login', { headers: this.getHeaders() } )
+      .pipe(
+        map(response => {
+          console.log( response.data );
+          console.log( !! response.data );
+
+          return !! response.data;
+        } ),
+        catchError( () => of( false ) )
+      );
   }
 }

@@ -14,23 +14,25 @@ import { ProductRegisterComponent } from './pages/private/products/product-regis
 import { CategoryEditComponent } from './pages/private/categories/category-edit/category-edit.component';
 import { ProductEditComponent } from './pages/private/products/product-edit/product-edit.component';
 import { UserEditComponent } from './pages/private/users/user-edit/user-edit.component';
+import { authGuard } from './guards/auth.guard';
+import { noAuthGuard } from './guards/no-auth.guard';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'credits', component: CreditsComponent },
-    { path: 'dashboard', component: DashboardComponent },
+    { path: 'register', component: RegisterComponent, canActivate: [ noAuthGuard ] },
+    { path: 'credits', component: CreditsComponent, canActivate: [ noAuthGuard ]  },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [ authGuard ] },
     { path: '404', component: PageNotFoundComponent },
-    { path: 'dashboard/users', component: UsersComponent },
-    { path: 'dashboard/products', component: ProductsComponent },
-    { path: 'dashboard/categories', component: CategoriesComponent },
-    { path: 'dashboard/user/new', component: UserRegisterComponent },
-    { path: 'dashboard/user/edit', component: UserEditComponent },
-    { path: 'dashboard/product/new', component: ProductRegisterComponent },
-    { path: 'dashboard/product/edit/:id', component: ProductEditComponent },
-    { path: 'dashboard/category/new', component: CategoryRegisterComponent },
-    { path: 'dashboard/category/edit/:id', component: CategoryEditComponent },
+    { path: 'dashboard/users', component: UsersComponent, canActivate: [ authGuard ] },
+    { path: 'dashboard/products', component: ProductsComponent, canActivate: [ authGuard ] },
+    { path: 'dashboard/categories', component: CategoriesComponent, canActivate: [ authGuard ] },
+    { path: 'dashboard/user/new', component: UserRegisterComponent, canActivate: [ authGuard ] },
+    { path: 'dashboard/user/edit', component: UserEditComponent, canActivate: [ authGuard ] },
+    { path: 'dashboard/product/new', component: ProductRegisterComponent, canActivate: [ authGuard ] },
+    { path: 'dashboard/product/edit/:id', component: ProductEditComponent, canActivate: [ authGuard ] },
+    { path: 'dashboard/category/new', component: CategoryRegisterComponent, canActivate: [ authGuard ] },
+    { path: 'dashboard/category/edit/:id', component: CategoryEditComponent, canActivate: [ authGuard ] },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', redirectTo: '404', pathMatch: 'full' }
 ];
