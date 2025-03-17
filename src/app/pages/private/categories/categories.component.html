@@ -20,8 +20,10 @@
               <td>{{ category.name }}</td>
               <td>{{ category.description }}</td>
               <td>
-                <a [routerLink]="'/dashboard/category/edit/' + (category._id ?? '')">Editar</a>
-                <button (click)="onRemove( category._id ?? '' )">Eliminar</button>
+                <div class="actions">
+                  <a [routerLink]="'/dashboard/category/edit/' + (category._id ?? '')" class="btn btn-primary">Edit</a>
+                  <button (click)="onRemove( category._id ?? '' )" class="btn btn-warning">Delete</button>
+                </div>
               </td>
             </tr>
           }

@@ -38,8 +38,10 @@
                 <div class="price">{{ product.price }}</div>
               </td>
               <td>
-                <a [routerLink]="'/dashboard/product/edit/' + (product._id ?? '')">Editar</a>
-                <button (click)="onRemove( product._id ?? '' )">Eliminar</button>
+                <div class="actions">
+                  <a [routerLink]="'/dashboard/product/edit/' + (product._id ?? '')" class="btn btn-primary">Edit</a>
+                  <button (click)="onRemove( product._id ?? '' )" class="btn btn-warning">Delete</button>
+                </div>
               </td>
             </tr>
           }
