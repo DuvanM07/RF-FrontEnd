@@ -8,21 +8,21 @@ export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   return authService.verifyAuthenticatedUser().pipe(
-    map(isAuthenticated => {
-      console.log( 'authGuard', isAuthenticated );
-      if (isAuthenticated) {
-        return true;                  // Usuario autenticado, permite el acceso
+    map( isAuthenticated => {
+      console.log( 'noAuthGuard', isAuthenticated );
+
+      /** Si NO esta autenticado */
+      if ( ! isAuthenticated ) {
+        router.navigate([ '/login' ]);  // Redirige al login si no está autenticado
+        return false;                   // Bloquea el acceso
       }
 
-      router.navigate(['/login']);  // Usuario NO autenticado, redirige a login
-
-      return false;                 // Usuario NO autenticado, bloquea el acceso
+      return true;                      // Permite el acceso si está autenticado
     }),
-    catchError(() => {
-      router.navigate([ '/' ]);                 // Usuario autenticado, redirige a home
-
-      // [valor] equivale a of( valor )
-      return [ false ];   // Si hay error, bloquea el acceso
+    catchError(( error ) => {
+      console.error( error );
+      router.navigate(['/']);           // Redirige a home en caso de error
+      return [ false ];                 // Bloquea el acceso en caso de error
     })
   );
 };
