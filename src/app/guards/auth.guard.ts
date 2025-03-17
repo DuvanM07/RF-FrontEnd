@@ -18,6 +18,8 @@ export const authGuard: CanActivateFn = (route, state) => {
       return false;                 // Usuario NO autenticado, bloquea el acceso
     }),
     catchError(() => {
+      router.navigate([ '/' ]);                 // Usuario autenticado, redirige a home
+
       // [valor] equivale a of( valor )
       return [ false ];   // Si hay error, bloquea el acceso
     })
