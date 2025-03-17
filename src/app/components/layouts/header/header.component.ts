@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Event, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
@@ -19,7 +19,9 @@ export class HeaderComponent {
     return this.authservice.user;
   }
 
-  logout() {
+  logout( $event: any ) {
+    $event.preventDefault();
+
     this.authservice.logoutUser().subscribe({
       next: ( data ) => {
         console.log( data );
